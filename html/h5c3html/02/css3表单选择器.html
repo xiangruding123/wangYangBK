@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>css3表单选择器</title>
+		<style>
+			input[type=checkbox]:indeterminate {
+				outline: 2px solid greenyellow;
+			}
+			/**/
+		</style>
+		<script>
+		</script>
+	</head>
+
+	<body>
+
+		<form>
+			兴趣:<input type="checkbox" name="r">阅读</input>
+			<input type="checkbox" name="r">旅游</input>
+			<input type="checkbox" name="r">看电影</input>
+			<input type="checkbox" name="r">上网</input>
+		</form>
+		<script type="text/javascript">
+			var inputs = document.getElementsByTagName('input');
+			for(var i = 0; i < inputs.length; i++) {
+				//console.log(inputs[i].indeterminate)
+				inputs[i].indeterminate = true;
+			}
+		</script>
+
+	</body>
+
+</html>

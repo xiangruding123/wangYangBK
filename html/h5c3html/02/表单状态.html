@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>表单状态</title>
+		<style>
+			/*
+			input[type=text]:hover{background:red;}
+			input[type=text]:focus{background:blue;}
+			input[type=text]:active{background:green;}
+			*/
+			
+			input[type="text"]:enabled {
+				background-color: yellow;
+			}
+			
+			input[type="text"]:disabled {
+				background-color: purple;
+			}
+			
+			input[type="text"]:read-only {
+				background-color: gray;
+			}
+			
+			input[type="text"]:read-write {
+				background-color: greenyellow;
+			}
+			
+			input[type="text"]:-moz-read-only {
+				background-color: gray;
+			}
+			
+			input[type="text"]:-moz-read-write {
+				background-color: greenyellow;
+			}
+		</style>
+		<script>
+			function radio_onchange() {
+				var radio = document.getElementById("radio1");
+				var text = document.getElementById("text1");
+				if(radio.checked)
+					text.disabled = false;
+				else {
+					text.value = "";
+					text.disabled = true;
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<form>
+			<input type="radio" id="radio1" name="radio" onchange="radio_onchange();">可用</radio>
+			<input type="radio" id="radio2" name="radio" checked onchange="radio_onchange();">不可用</radio><br/>
+			<input type="text" id="text1" readonly disabled />
+			<input type="text" id="text2" />
+		</form>
+		<hr>
+		<style type="text/css">
+			/*input[type="checkbox"]:default {
+			    outline:2px solid greenyellow;
+			}
+			input[type="checkbox"]:checked {
+			    outline:2px solid blue;
+			}
+			
+			input[type=checkbox]:default {
+			    outline:2px solid skyblue;
+			}
+			input[type=checkbox]:indeterminate{
+			    outline:2px solid greenyellow;
+			}*/
+		</style>
+
+		<form>
+			兴趣:<input type="checkbox" name="r">阅读</input>
+			<input type="checkbox" name="r">旅游</input>
+			<input type="checkbox" name="r">看电影</input>
+			<input type="checkbox" name="r">上网</input>
+		</form>
+
+		<!--
+		<input type="password" />
+		
+		<input type="text" />
+		-->
+	</body>
+
+</html>

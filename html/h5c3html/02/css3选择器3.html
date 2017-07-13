@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>css3选择器</title>
+		<style>
+			li[name] {
+				color: yellow;
+			}
+			/*有该属性的元素*/
+			
+			li[name*=a] {
+				color: blue;
+			}
+			/*包含*/
+			
+			li[name$=c] {
+				color: green;
+			}
+			/*结尾*/
+			
+			li[name^=b] {
+				color: red;
+			}
+			/*开头*/
+			
+			li[name~=x] {
+				color: orange;
+			}
+			/*包含，单词 或前后含空格*/
+			
+			li[name|=b] {
+				color: gray;
+			}
+			/*头， 单词 或-连字符*/
+			
+			li[name=xx] {
+				color: skyblue;
+			}
+			/*相等*/
+		</style>
+	</head>
+
+	<body>
+
+		<ul>
+			<li name="la">xxxx</li>
+			<li name="b">xxxx</li>
+			<li name="l">xxxx</li>
+			<li name="b x">xxxx</li>
+			<li>xxxx</li>
+			<li>xxxx</li>
+			<li name="b-xc">xxxx</li>
+			<li name="q x c">xxxx</li>
+			<li name="x">xxxx</li>
+			<li name="xx">xxxx</li>
+		</ul>
+
+	</body>
+
+</html>

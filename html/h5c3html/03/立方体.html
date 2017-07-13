@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>无标题文档</title>
+		<style>
+			body {
+				padding-left: 200px;
+				padding-top: 200px;
+			}
+			
+			.wrap {
+				perspective: 800px;
+				width: 600px;
+				height: 600px;
+				background: #f5f5f5;
+				position: relative;
+				/*perspective-origin: 50% 50%;默认为居中*/
+			}
+			
+			.cube {
+				left: 200px;
+				top: 200px;
+				position: relative;
+				width: 200px;
+				height: 200px;
+				transform-style: preserve-3d;
+				/*transform-origin: 0 0 -100px; 改变z轴*/
+			}
+			
+			.cube div {
+				position: absolute;
+				width: 200px;
+				height: 200px;
+			}
+			
+			.back {
+				transform: translateZ(-100px) rotateY(180deg);
+				background: gray;
+				opacity: 0.4;
+			}
+			
+			.right {
+				transform: rotateY(-270deg) translateX(100px);
+				background: green;
+				opacity: 0.4;
+				transform-origin: top right;
+			}
+			
+			.left {
+				transform: rotateY(270deg) translateX(-100px);
+				background: yellowgreen;
+				opacity: 0.4;
+				transform-origin: center left;
+			}
+			
+			.top {
+				transform: rotateX(-90deg) translateY(-100px);
+				background: orange;
+				opacity: 0.4;
+				transform-origin: top center;
+			}
+			
+			.bottom {
+				transform: rotateX(90deg) translateY(100px);
+				background: blue;
+				opacity: 0.4;
+				transform-origin: bottom center;
+			}
+			
+			.front {
+				transform: translateZ(100px);
+				background: red;
+				opacity: 0.4;
+			}
+			
+			.cube {
+				transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+			}
+			/*
+			@keyframes spin {
+			    from { transform: rotateY(0); }
+			    to { transform: rotateY(360deg); }
+			}
+			 
+			.cube {
+			    animation: spin 5s infinite linear;
+			}
+			
+			@keyframes spin-vertical {
+			    from { transform: rotateX(0); }
+			    to { transform: rotateX(-360deg); }
+			}
+			 
+			.cube-wrap.vertical .cube {
+			    margin: 0 auto; 
+			 
+			    transform-origin: 0 100px;
+			    animation: spin-vertical 5s infinite linear;
+			}
+			 
+			.cube-wrap.vertical .top {
+			    transform: rotateX(-270deg) translateY(-100px);
+			}
+			 
+			.cube-wrap.vertical .back {
+			    transform: translateZ(-100px) rotateX(180deg);
+			}
+			 
+			.cube-wrap.vertical .bottom {
+			    transform: rotateX(-90deg) translateY(100px);
+			}
+			*/
+		</style>
+	</head>
+
+	<body>
+
+		<div class="wrap">
+			<div class="cube">
+				<div class="front">front</div>
+				<div class="back">back</div>
+				<div class="top">top</div>
+				<div class="bottom">bottom</div>
+				<div class="left">left</div>
+				<div class="right">right</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

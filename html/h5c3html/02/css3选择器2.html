@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>css3选择器</title>
+		<style>
+			/*
+			li:first-line {
+				color: red;
+			}
+			li:first-letter{ font-size:50px;}
+			li[name=b]:before{
+				content:"台词"
+			}
+			li[name=l]:after{
+				content:url(https://www.baidu.com/img/bd_logo1.png)
+			}
+			
+			:root{
+			    background-color: yellow;
+			}
+			body{
+				
+				border:1px solid gray;
+			    background-color: limegreen;
+			}
+			*/
+						/*li *:not(span){color:red;}*/
+						/*
+			所有li下面的子元素，将不为span的元素设置红色
+			
+			
+			li:empty{background:blue;}
+			
+			a:target{background:green;}
+			
+			i:first-child{
+				background:red;
+			}
+			li:last-child{
+				background:green;
+			}
+			
+			
+			li:nth-child(1){
+				background:green;
+			}
+			li:nth-last-child(3){
+				background:red;
+			}
+			
+			h1:nth-child(odd){
+				background:green;
+			}
+			h1:nth-child(even){
+				background:red;
+			}
+			h1:nth-of-type(odd){
+				background:green;
+			}
+			h1:nth-of-type(even){
+				background:red;
+			}
+			
+			
+			h1:nth-child(2n+0){
+				background:red;
+			}
+			
+			
+			h1:nth-last-child(-n+3){
+				background:red;
+			}
+			
+			
+			p:only-child{background:red;}*/
+			
+			p:nth-child(1):nth-last-child(1) {
+				background-color: yellow;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div>
+			<p>ppp</p>
+		</div>
+
+		<div>
+			<p>a</p>
+			<p>ppp</p>
+		</div>
+
+		<p>p2p2p</p>
+
+		<!--
+		<h1>hhhhhh</h1>
+		<div>dddddd</div>
+		<h1>hhhhhh</h1>
+		<div>dddddd</div>
+		<h1>hhhhhh</h1>
+		<div>dddddd</div>
+		<h1>hhhhhh</h1>
+		<div>dddddd</div>
+		
+		
+		<h1>hhhhhh</h1>
+		<h1>hhhhhh</h1>
+		<h1>hhhhhh</h1>
+		<h1>hhhhhh</h1>
+		<h1>hhhhhh</h1>
+		<h1>hhhhhh</h1>
+		<h1>hhhhhh</h1>
+		<h1>hhhhhh</h1>
+		-->
+		
+		<!--
+		<a id="a1">a1</a><br>
+		
+		<ul>
+			<li name="la">选择器用于选取属于其父元素的首个子元素的指定选择器。<span>1<b>bb</b><i>iii</i>11</span><p>2222</p><div>3<span>3</span>3</div>4444<i>333</i></li>
+		    <li name="b"><a href="#a1">a1</a></li>
+		    <li name="l">llllll</li>
+		    <li name="b x">xxxx</li>
+		    <li style="width:60px;height:30px;"></li>
+		    <li>xxxx</li>
+		    <li name="b-xc">xxxx</li>
+		    <li name="q x c">xxxx</li>
+		    <li name="x"><a href="#a2">a2</a></li>
+		    <li name="xx">lilili</li>
+		</ul><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<a id="a2">a2</a><br>
+		-->
+	</body>
+
+</html>

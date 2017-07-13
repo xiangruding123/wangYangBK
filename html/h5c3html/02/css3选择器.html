@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>css3选择器</title>
+		<style>
+			/*li+li{ border-top:1px solid gray;}
+			.c1~.c2{ color:red;}
+			
+			q:lang(nooqwerwewr){
+			   quotes: "~" "~"
+			}
+			*/
+						/*h2:before{
+				content:url(https://www.baidu.com/img/bd_logo1.png);
+				width:60px;height:30px;border:1px solid gray;
+			    content: 'COLUMN';
+			    color: white;
+			    background-color: orange;
+			    font-family: 'Comic Sans MS', Helvetica, sans-serif;
+			    padding: 1px 5px;
+			    margin-right: 10px;
+			}
+			img:after{
+			    content:attr(alt);
+			    display:block;
+			    text-align:center;
+			    margin-top:5px;
+			}
+			*/
+			
+			body {
+				counter-reset: a 0;
+			}
+			
+			h1:before {
+				content: "" counter(a) ":";
+				counter-increment: a;
+			}
+			
+			h1 {
+				counter-reset: b 0;
+			}
+			
+			h2:before {
+				counter-increment: b;
+				content: counter(a) "." counter(b) ":";
+			}
+		</style>
+		<script>
+		</script>
+	</head>
+
+	<body>
+
+		<h1>aaaaa</h1>
+		<h1>aaaaa</h1>
+		<h2>bbbb</h2>
+		<h2>bbbb</h2>
+		<h1>aaaaa</h1>
+		<h1>aaaaa</h1>
+		<h2>bbbb</h2>
+		<h2>bbbb</h2>
+		<h1>aaaaa</h1>
+		<h2>bbbb</h2>
+		<h2>bbbb</h2>
+
+		<p><img src="https://www.baidu.com/img/bd_logo1.png" alt="蓝天白云" /></p>
+
+		<h2>标题文字</h2>
+
+		<p>文字<q lang="nooqwerwewr">段落中的引用的文字</q>文字</p>
+		<q lang="no">段落中的引用的文字</q>
+
+		<ul>
+			<li>x</li>
+			<li>x</li>
+			<li class="c1">x</li>
+			<li>x</li>
+			<li class="c2">x</li>
+			<li>x</li>
+			<li>x</li>
+			<li class="c2">x</li>
+			<li>x</li>
+			<li>x</li>
+		</ul>
+
+	</body>
+
+</html>

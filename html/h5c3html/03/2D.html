@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>无标题文档</title>
+		<style>
+			div {
+				width: 100px;
+				height: 75px;
+				background-color: yellow;
+				border: 1px solid black;
+			}
+			
+			div#div2 {
+				transform: translate(50px, 50px);
+			}
+			
+			div#div3 {
+				/*transform-origin:0 0;
+				transform-origin:100% 0;
+				transform-origin:right bottom;*/
+				transform: rotate(45deg);
+				/*-ms-transform:rotate(-30deg);
+				-moz-transform:rotate(-30deg);
+				-webkit-transform:rotate(-30deg);
+				-o-transform:rotate(-30deg);*/
+			}
+			
+			div#div4 {
+				margin: 100px;
+				transform: scale(1.5, 1);
+			}
+			
+			div#div5 {
+				transform: skew(-30deg, 30deg);
+			}
+			
+			div#div6 {
+				/*
+				中心点初始化时，x=0，y=0
+				坐标位置：ax+cy+e为变换后的水平坐标，bx+dy+f表示变换后的垂直位置。
+				缩放：也就是matrix(sx, 0, 0, sy, 0, 0);，等同于scale(sx, sy);
+			
+				弧度和角度的转换为 1度=PI/180
+				
+				旋转角度：matrix(cosθ,sinθ,-sinθ,cosθ,0,0)
+				var cosVal = Math.cos(this.value * Math.PI / 180);
+				var sinVal = Math.sin(this.value * Math.PI / 180);
+				var valTransform = 'matrix('+ cosVal.toFixed(6) +','+ sinVal.toFixed(6) +','+ (-1 * sinVal).toFixed(6) +','+ cosVal.toFixed(6) +',0,0)'
+				
+				斜切：
+				var tanValY = Math.tan(eleRangeY.value * Math.PI / 180)
+				var tanValX = Math.tan(eleRangeX.value * Math.PI / 180);
+				var valTransform = 'matrix(1,'+ tanValY.toFixed(6) +','+ tanValX.toFixed(6) +',1,0,0)';
+					
+				transform:matrix(1,0,0,1,0,0);*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>div1</div>
+		<div id="div2">div2</div>
+		<div id="div3">div3</div>
+		<div id="div4">div4</div>
+		<div id="div5">div5</div>
+		<div id="div6">div6</div>
+	</body>
+
+</html>
