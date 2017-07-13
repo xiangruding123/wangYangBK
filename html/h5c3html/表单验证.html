@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>表单验证</title>
+		<script>
+			function check() {
+				var email = document.getElementById("email");
+				if(email.value == "") {
+					alert("请输入邮箱");
+					return false;
+				} else if(!email.checkValidity()) {
+					alert(1);
+				} else {
+					alert(2);
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<form method="get" action="http://www.baidu.com" onSubmit="return check();">
+			email:<input type="email" id="email" />required<br>
+
+			<br><input type="submit" value="submit" />
+		</form>
+
+	</body>
+
+</html>
