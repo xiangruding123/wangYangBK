@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>表单</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+
+	<body>
+
+		<form method="get" action="http://www.baidu.com" oninput="output.innerHTML=number.value*range.value" novalidate>
+			email:<input type="email" multiple required />required<br> url:
+
+			<input type="url" /><br> number:
+
+			<input id="number" type="number" value="" min="5" max="15" step="3" /><br> range:
+
+			<input id="range" type="range" value="8" min="5" max="15" step="10" onChange="document.title=this.value" /><br> date:
+
+			<input type="time" min="10:10" max="10:40" step="5" /><br>
+			<input type="month" min="2010-10" max="2010-12" step="5" /><br>
+			<input type="week" min="2016-10-10" max="2016-11-11" step="10" /><br> search:
+
+			<input type="search" autofocus /><br> color:
+
+			<input id="color" type="color" /><br> output:
+
+			<output id="output"></output><br> datalist:
+
+			<input type="url" list="url_list" name="link" autocomplete="off" /><br>
+
+			<datalist id="url_list"> 
+				<option label="W3School" value="http://www.W3School.com.cn" />
+			    <option label="Google" value="http://www.google.com" />
+			    <option label="Microsoft" value="http://www.microsoft.com" /> 
+			</datalist> 
+			pattern:
+
+			<input pattern="[0-9][A-Z]{3}" title="请输入一个数字三个大写字母" placeholder='请输入一个数字三个大写字母'><br> text:
+
+			<input type="text" name="text" autocomplete="on" /><br> file:
+
+			<input type="file" multiple />
+
+			<br><input type="submit" value="submit" />
+		</form>
+
+	</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>无标题文档</title>
+		<script src="html5shiv.js"></script>
+		<style>
+			/*article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary{ 
+				display: block;background:green;
+			} */
+			
+			body {
+				background: green;
+				color: white;
+			}
+			
+			#header {
+				background: #039;
+				border: 4px solid white;
+				margin-bottom: 10px;
+			}
+			
+			#nav {
+				background: #099;
+				border: 2px solid white;
+				margin: 10px;
+			}
+			
+			#section {
+				float: left;
+				width: 60%;
+				background: #039;
+				border: 4px solid white;
+			}
+			
+			#article {
+				background: #099;
+				border: 2px solid white;
+				margin: 10px;
+			}
+			
+			#article>.header {
+				background: #09F;
+				border: 1px solid white;
+				margin: 10px;
+			}
+			
+			#article>p {
+				background: #09F;
+				border: 1px solid white;
+				margin: 10px;
+			}
+			
+			#article>.footer {
+				background: #09F;
+				border: 1px solid white;
+				margin: 10px;
+			}
+			
+			#aside {
+				float: right;
+				width: 35%;
+				background: #039;
+				border: 4px solid white;
+				height: 180px;
+			}
+			
+			#clear {
+				clear: both;
+			}
+			
+			#footer {
+				margin-top: 10px;
+				background: #039;
+				border: 4px solid white;
+			}
+		</style>
+		<!--[if lt IE 9]>
+			<script type="text/javascript">
+			  	/*var e=("abbr,article,aside,audio,canvas,datalist,details,"+
+				  	"figure,footer,header,hgroup,mark,menu,meter,nav,output,"+
+				  	"progress,section,time,video").split(',');
+				  	for(var i=0;i<e .length;i++){
+				    	document.createElement(e[i]);
+				  	}
+				*/
+			</script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+		<!--<header id="header">header</header>-->
+		<header id="header">
+			header
+			<nav id="nav">nav</nav>
+		</header>
+		<section id="section">
+			section
+			<article id="article">
+				article
+				<header class="header">header</header>
+				<p>p</p>
+				<footer class="footer">footer</footer>
+			</article>
+		</section>
+		<aside id="aside">aside</aside>
+		<div id="clear"></div>
+		<footer id="footer">footer</footer>
+
+	</body>
+
+</html>

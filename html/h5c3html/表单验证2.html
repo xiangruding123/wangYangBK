@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>checkValidity【form和input的】显示验证</title>
+		<style>
+			ul,li{
+				list-style: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form id="testForm" onsubmit="return check();">
+			<label for="pwd">密码</label><input type="password" id="pwd">
+			<label for="pwd1">确认密码</label><input type="password" id="pwd1">
+
+			<label for="email">邮箱：</label>
+			<input type="email" id="email" name="email">
+			<input type="submit" value="提交">
+		</form>
+		<figure>
+			<img src="../../img/h4c3img/big.jpg" alt="图像的名称">
+			<figCaption>图像的名称</figCaption>
+		</figure>
+		<ol reversed="reversed" start="3">
+			<li>wooer</li>
+			<li>woo瑞特er</li>
+			<li>发发</li>
+			<li>活该活该</li>
+			<li>热热</li>
+		</ol>
+		<ol start="3">
+			<li>wooer</li>
+			<li>woo瑞特er</li>
+			<li>发发</li>
+			<li>活该活该</li>
+			<li>热热</li>
+		</ol>
+		<p>cite里的内容只能是：表示一个作品。</p>
+		<cite>这个杀手不太冷</cite>
+		<br>
+		<input type="file" id="file" multiple size="80">
+		<p id="size"></p>
+		<p id="result"></p>
+		<button onclick="showFileName()">文件上传</button>
+		<script>
+			//显示验证
+			function check() {
+				var pwd = document.getElementById("pwd");
+				var pwd1 = document.getElementById("pwd1");
+				var email = document.getElementById("email");
+				if(pwd.value != pwd1.value) {
+					alert("密码不一致！");
+				} else {
+					pwd1.setCustomValidity("1111111"); //自定义错误信息。
+				}
+				if(email.value == "") {
+					alert("请输入email的地址。");
+					return false;
+				} else if(!email.checkValidity()) {
+					alert("请输入正确的email地址。");
+				} else {
+					alert("输入的email正确！")
+				}
+			}
+			
+			
+			//文件上传
+			
+			function showFileName() {
+				var file;
+				var len = document.getElementById("file").files.length; //files：返回FileList文件列表对象
+				var size = document.getElementById("size");
+				for(var i = 0; i < len; i++) {
+					file = document.getElementById("file").files[i]; //file对象为用户选择的单个文件对象
+					alert(file.name);
+					size.innerHTML = file.size + "   " + file.type; //显示文件字节长度,显示文件类型。
+					//            if(!(/img\/\w+/.test(file.type))){
+					//                alert(file.name+" 不是图像文件！");
+					//                return false;
+					//            }else{
+					//                alert(file.name+" 文件已经上传！");
+					//            }
+					//readerAsBinary(file);
+					//readerAsText(file);
+					readerAsDataUrl(file);
+				}
+			}
+			//FileReader接口用来把文件读入内存。并读取文件中的数据。
+			//检测浏览器是否支持FilterReader接口
+			//一：将文件以二进制形式读入页面
+			function readerAsBinary(file) {
+				if(typeof FileReader == "undefined") {
+					alert("你的浏览器暂时不支持FileReader接口！！");
+				} else {
+					var reader = new FileReader();
+					//FileReader接口的四个方法：
+					//三个用于读取文件，一个用于中断过程,不会返回任何的值。所有的结果都在属性result中。
+					reader.readAsBinaryString(file);
+					reader.onload = function(e) {
+						var result = document.getElementById("result");
+						result.innerHTML = this.result;
+					}
+				}
+			}
+			//二：根据文本的形式读入页面
+			function readerAsText(file) {
+				if(typeof FileReader == "undefined") {
+					alert("你的浏览器暂时不支持FileReader接口！！");
+				} else {
+					var reader = new FileReader();
+					//FileReader接口的四个方法：
+					//三个用于读取文件，一个用于中断过程,不会返回任何的值。所有的结果都在属性result中。
+					reader.readAsText(file);
+					reader.onload = function(e) {
+						var result = document.getElementById("result");
+						result.innerHTML = this.result;
+					}
+				}
+			}
+			//三：根据图像Data Url形式读入页面。
+			function readerAsDataUrl(file) { //地址
+				if(typeof FileReader == "undefined") {
+					alert("你的浏览器暂时不支持FileReader接口！！");
+				} else {
+					var reader = new FileReader();
+					//FileReader接口的四个方法：
+					//三个用于读取文件，一个用于中断过程,不会返回任何的值。所有的结果都在属性result中。
+					reader.readAsDataURL(file);
+
+					reader.onloadstart = function(e) {
+						alert("loadstart!!!");
+					};
+					reader.onprogress = function(e) { //数据读取中断时触发
+						alert("progress!!!!");
+					};
+					reader.onload = function(e) { //数据读取成功，完成时触发。
+						var result = document.getElementById("result");
+						result.innerHTML = '<img src="' + this.result + '" alt="" />';
+						alert("load");
+					};
+					reader.onloadend = function(e) {
+						alert("loadend!!!!");
+					};
+					//前面四个按照先后发生的顺序来调整。
+					reader.onabort = function(e) { //数据读取中断时触发
+						alert("onabort!!!!");
+					};
+					reader.onerror = function(e) { //数据读取中断时触发
+						alert("onerror!!!!");
+					};
+
+				}
+			}
+		</script>
+	</body>
+
+</html>
