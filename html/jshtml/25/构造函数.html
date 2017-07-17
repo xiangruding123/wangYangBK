@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script>
+			/*
+			function createObject(_name, _age){	//工厂模式 创建对象
+				var obj = new Object();
+				obj.name = _name;
+				obj.age = _age;
+				obj.intro = function(){
+					alert(this.name +","+ this.age);
+				}
+				return obj;
+			}
+
+			var obj1 = createObject("张三", "17");
+			var obj2 = createObject("李四", "18");
+
+			alert( obj1.name );
+			alert( obj2.name );
+			*/
+
+			//执行该函数时，如果用到了new，表示程序自动添加29和35行代码
+			function createObject(_name, _age) {
+				//var this = new Ojbect();	
+				this.name = _name;
+				this.age = _age;
+				this.intro = function() {
+					alert(this.name + "," + this.age);
+				}
+				//reutrn this;
+			}
+
+			var obj1 = new createObject("张三", "17"); //new指创建一个实例
+			//obj1.intro();
+			var obj2 = new createObject("张三", "17");
+			//alert( obj1.name == obj2.name );
+			//alert( obj1.intro == obj2.intro );
+
+			var fn = new Function("alert('123')");
+			//fn();
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

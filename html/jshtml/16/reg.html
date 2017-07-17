@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script src="ajax.js"></script>
+		<script>
+			function chkUserName() {
+				var username = document.getElementById("username");
+				var span1 = document.getElementById("span1");
+				var url = "txt.txt?t=" + new Date().getTime();
+				ajax.get(url, function(str) {
+					var arr = eval("(" + str + ")");
+					var flag = false; // 为假时，我们认为没有被占用
+					var txtUser = username.value;
+					for(var i = 0; i < arr.length; i++) {
+						if(arr[i] == txtUser) {
+							flag = true; // 认为已被占用	
+							break;
+						}
+					}
+					span1.innerHTML = (flag) ? "<font color=red>用户名已被占用</font>" : "<font color=green>用户名可以使用</font>"
+				});
+			}
+		</script>
+	</head>
+
+	<body>
+
+		用户名：<input id="username" type="text" onblur="chkUserName()" />
+		<span id="span1"></span>
+
+	</body>
+
+</html>

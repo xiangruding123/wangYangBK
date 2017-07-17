@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax</title>
+		<style>
+
+		</style>
+		<script>
+			// 打电话				// ajax
+
+			// 要有一个电话			有ajax对象
+
+			var xhr;
+			if(window.XMLHttpRequest) {
+				xhr = new XMLHttpRequest();
+			} else {
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			}
+
+			//alert( xhr );
+
+			// 拨号					建立连接	
+			/*
+			url是由几个部分组成的
+			协议		http
+			主机
+			端口
+			文件夹/文件
+			参数
+			*/
+			var url = "txt.txt?t=" + new Date().getTime();
+			xhr.open("get", url, true);
+
+			// 说话					发送请求	
+			xhr.send();
+
+			// 回应					进行响应
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					var str = xhr.responseText;
+					alert(str);
+					//var obj = eval( "("+str+")" );
+					//alert( typeof obj );
+					//alert( obj.b );
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

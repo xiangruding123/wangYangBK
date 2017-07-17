@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script>
+			function Person2(_name) {
+				this.name = _name;
+			}
+
+			function Person(_name) {
+				this.name = _name;
+			}
+			/*
+			将人类看成一个对象，将人类的一些特点看成属性和方法
+			一个个体的人 看成 人类的实例， 人天生具备人类的特点
+
+			将动物看成一个对象，动物含有野性这个特点
+			猫看成动物的实例，猫天生具备野性这个特点
+			*/
+
+			//alert( Person.prototype );
+
+			Person.prototype.age = 18;
+			var p1 = new Person("a");
+			var p2 = new Person2("a");
+			//alert( p1.age );	//在实例上查找属性
+
+			//alert( p1.__proto__.name );	//在原型对象上查找属性
+			//alert( p1.__proto__.age );
+
+			//alert( Person2.prototype.isPrototypeOf(p2) );
+
+			//alert(p1.name);//a
+			//delete p1.name;
+			//alert(p1.name);//undefined
+
+			//alert( p1.hasOwnProperty("name2") );//是否包含该实例属性
+
+			alert('name234' in p1);
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

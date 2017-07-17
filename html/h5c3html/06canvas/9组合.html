@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>canvas</title>
+		<style>
+			#myCanvas {
+				border: 1px solid gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="400" height="400"></canvas><br>
+		<select id="select1">
+			<option value="source-over">source-over（默认值）:在原有图形上绘制新图形</option>
+			<option value="destination-over">:在原有图形下绘制新图形</option>
+			<option value="source-in">:显示原有图形和新图形的交集，新图形在上，所以颜色为新图形的颜色</option>
+			<option value="destination-in">:显示原有图形和新图形的交集，原有图形在上，所以颜色为原有图形的颜色</option>
+			<option value="source-out">:只显示新图形非交集部分</option>
+			<option value="destination-out">:只显示原有图形非交集部分</option>
+			<option value="source-atop">:显示原有图形和交集部分，新图形在上，所以交集部分的颜色为新图形的颜色</option>
+			<option value="destination-atop">:显示新图形和交集部分，新图形在下，所以交集部分的颜色为原有图形的颜色</option>
+			<option value="lighter">:原有图形和新图形都显示，交集部分做颜色叠加</option>
+			<option value="xor">:重叠部分不显示</option>
+			<option value="copy">:只显示新图形</option>
+		</select>
+		<input id="btn" type="button" value="设置" />
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+
+			//ctx.beginPath();
+			ctx.fillStyle = "red";
+			//ctx.translate(100,100);	
+			//ctx.scale(1.5,0.5);
+			//ctx.rotate(45*Math.PI/180);
+			//如需将角度转换为弧度，请使用 degrees*Math.PI/180 公式进行计算。
+			ctx.rect(100, 100, 100, 100);
+			ctx.fill();
+			//ctx.closePath();
+
+			//ctx.globalCompositeOperation = "xor";
+
+			ctx.beginPath();
+			ctx.fillStyle = "blue";
+			//ctx.translate(-100,0);
+			//ctx.scale(0.5,1.5);	
+			//ctx.rotate(1*Math.PI/180);
+			ctx.rect(150, 150, 100, 100);
+			ctx.fill();
+			ctx.closePath();
+
+			btn.onclick = function() {
+				ctx.clearRect(0, 0, 400, 400);
+				//ctx.clearRect(100, 100, 50, 50);
+				//alert(select1.value);
+
+				ctx.beginPath();
+				ctx.fillStyle = "red";
+				ctx.rect(100, 100, 100, 100);
+				ctx.fill();
+				ctx.closePath();
+
+				ctx.globalCompositeOperation = select1.value;
+
+				ctx.beginPath();
+				ctx.fillStyle = "blue";
+				ctx.rect(150, 150, 100, 100);
+				ctx.fill();
+				ctx.closePath();
+			}
+
+			/*
+			type：
+			        source-over（默认值）:在原有图形上绘制新图形
+			        destination-over:在原有图形下绘制新图形
+			        source-in:显示原有图形和新图形的交集，新图形在上，所以颜色为新图形的颜色
+			        destination-in:显示原有图形和新图形的交集，原有图形在上，所以颜色为原有图形的颜色
+			        source-out:只显示新图形非交集部分
+			        destination-out:只显示原有图形非交集部分
+			        source-atop:显示原有图形和交集部分，新图形在上，所以交集部分的颜色为新图形的颜色
+			        destination-atop:显示新图形和交集部分，新图形在下，所以交集部分的颜色为原有图形的颜色
+			        lighter:原有图形和新图形都显示，交集部分做颜色叠加
+			        xor:重叠部分不显示       
+			 copy:只显示新图形
+			*/
+		</script>
+	</body>
+
+</html>

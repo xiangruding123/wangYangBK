@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>localStorage</title>
+		<style>
+
+		</style>
+		<script>
+			//if(window.localStorage){
+			//新建
+			//localStorage.setItem("aaa", "111");
+			//localStorage.bbb="222";
+			//localStorage["ccc"]="333";
+			//获取
+			//var str;
+			//str = localStorage.getItem("aaa");
+			//str = localStorage["bbb"];
+			//alert(str);
+			//删除
+			//localStorage.removeItem("aaa");
+			//localStorage.clear();
+			//遍历
+			//alert( localStorage.length );
+			//for(var i=0; i<localStorage.length; i++){
+			//console.log( localStorage.key(i) );
+			//}
+			//for(var i in localStorage){
+			//console.log( i+":"+localStorage[i] );
+			//}
+			//console.log( localStorage );
+			//转换
+			//var data = {'a':'1','b':'2'};
+			//var str = JSON.stringify(data);
+			//console.log(str);
+
+			//localStorage.aaa = "{'a':'1','b':'2'}";
+			//localStorage.aaa = '{"a":"1","b":"2"}';
+			//localStorage["aaa"] = "{\"a\":3,\"b\":true}"
+			//console.log( typeof localStorage.aaa );
+			//console.log( JSON.parse(localStorage.aaa) );
+			//console.log( eval("("+localStorage.aaa+")") );
+
+			//}else{
+			//alert("浏览器不支持Storage");
+			//}
+
+			window.onload = function() {
+				var inps = document.querySelectorAll("input");
+				inps[1].onclick = function() {
+					sessionStorage.ss = inps[0].value;
+				}
+				inps[2].onclick = function() {
+					alert(sessionStorage.ss);
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<fieldset>
+			<legend>sessionStorage</legend>
+			<input type="text" required /><br><br>
+			<input type="button" value="保存数据" />
+			<input type="button" value="读取数据" />
+		</fieldset>
+
+	</body>
+
+</html>

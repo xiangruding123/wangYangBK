@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script>
+			window.onload = function() {
+				var btns = document.getElementsByTagName("input");
+				for(var i = 0; i < btns.length; i++) {
+					var btn = btns[i];
+					//btn.index=i;
+					//btn.index=function(n){return n}(i);
+					/*btn.a=function(n){
+						return function(){
+							return n;
+						}
+					}(i);*/
+
+					(function(n) {
+						btn.a = n;
+					})(i);
+
+					btn.onclick = function() {
+						//alert(this.value);
+						//alert(this.index);
+						//alert( this.a() );
+						alert(this.a);
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<input type="button" value="0" />
+		<input type="button" value="1" />
+		<input type="button" value="2" />
+		<input type="button" value="3" />
+		<input type="button" value="4" />
+
+	</body>
+
+</html>

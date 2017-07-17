@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script>
+			function a() {
+				var num = 1;
+				return function() {
+					return ++num;
+				}
+			}
+
+			var b = a();
+			alert(b());
+			alert(b());
+			//console.log( b );
+
+			function f1() {
+				var a = 1
+			}
+
+			function f2() {
+				alert(a)
+			}
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ÂÖ²¥Í¼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        li {
+            float: left;
+        }
+
+        .banner {
+            width: 810px;
+            height: 320px;
+            position: relative;
+            margin: 5px auto;
+            overflow: hidden;
+        }
+
+        #picbox {
+            width: 810px;
+            height: 320px;
+            position: absolute;
+        }
+
+        #pic {
+            width: 4050px;
+            position: absolute;
+        }
+
+        #num {
+            width: 100px;
+            height: 20px;
+            position: absolute;
+            top: 270px;
+            left: 650px;
+            list-style: none;
+        }
+
+        #num li {
+            text-align: center;
+            border-radius: 10px;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            margin-left: 2px;
+        }
+
+    </style>
+    <script src="../startMove.js"></script>
+</head>
+<body>
+<div class="banner">
+    <div id="picbox">
+        <ul id="pic">
+            <li><a href="#"><img src="001.jpg"/></a></li>
+            <li><a href="#"><img src="002.jpg"/></a></li>
+            <li><a href="#"><img src="003.jpg"/></a></li>
+            <li><a href="#"><img src="004.jpg"/></a></li>
+            <li><a href="#"><img src="001.jpg"/></a></li>
+        </ul>
+    </div>
+    <ul id="num">
+        <li style="background: #fcc">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script>
+    var oPic = document.getElementById("pic");
+    var liList = document.getElementById("num").children;
+    var imgList=document.getElementById("pic").children;
+    var pageIndex = 1;
+    var timer;
+    function moveImg() {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            pageIndex++;
+            if (pageIndex == 6) {
+                oPic.style.left = 0;
+                pageIndex = 2;
+            }
+            startMove(oPic, {"left": -810 * (pageIndex - 1)});
+            for (var j = 0; j < liList.length; j++) {
+                liList[j].style.background = "#fff";
+            }
+            if (pageIndex == 5) {
+                liList[0].style.background = "#fcc";
+            } else {
+                liList[pageIndex - 1].style.background = "#fcc";
+            }
+        }, 2000);
+    }
+    moveImg();
+
+
+    for (var i = 0; i < liList.length; i++) {
+        liList[i].onmouseover = function () {
+            var index = parseInt(this.innerHTML);
+            for (var j = 0; j < liList.length; j++) {
+                liList[j].style.background = "#fff";
+            }
+            this.style.background = "#fcc";
+            clearInterval(timer);
+            startMove(oPic, {left: -810 * (index - 1)}, function () {
+                moveImg();
+            });
+            pageIndex=index;
+        }
+    }
+
+    for(var k=0;k<imgList.length;k++){
+        imgList[k].onmouseover=function () {
+            clearInterval(timer);
+        }
+        imgList[k].onmouseout=function () {
+            moveImg();
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

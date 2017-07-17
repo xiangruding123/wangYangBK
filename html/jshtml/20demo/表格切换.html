@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			td>img {
+				width: 30px;
+				height: 30px;
+				border: 1px solid gray;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+				var Imgs = document.getElementsByTagName("img");
+				for(var i = 1; i < Imgs.length; i++) {
+					Imgs[i].onclick = function() {
+						Imgs[0].src = this.src;
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div><img src="../18/pbl/images/1.jpg" /></div>
+		<table>
+			<tr>
+				<td><img src="../18/pbl/images/1.jpg" /></td>
+				<td><img src="../18/pbl/images/2.jpg" /></td>
+				<td><img src="../18/pbl/images/3.jpg" /></td>
+				<td><img src="../18/pbl/images/4.jpg" /></td>
+			</tr>
+		</table>
+
+	</body>
+
+</html>

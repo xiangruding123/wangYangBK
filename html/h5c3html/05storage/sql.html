@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>无标题文档</title>
+		<style>
+
+		</style>
+		<script src="jquery-2.1.0.js"></script>
+		<script>
+			$(function() {
+				//添加数据
+				$("input[type=button]:eq(0)").click(function() {
+					var strName = $("input[type=text]:eq(0)").val();
+					var strEmail = $("input[type=email]:eq(0)").val();
+					var strPhone = $("input[type=text]:eq(1)").val();
+					var strNote = $("input[type=text]:eq(2)").val();
+
+					var data = {
+						"name": strName,
+						"email": strEmail,
+						"phone": strPhone,
+						"note": strNote
+					};
+					localStorage[strName] = JSON.stringify(data);
+				});
+				//查询
+				$("input[type=button]:eq(1)").click(function() {
+					var key = $("input[type=text]:eq(3)").val();
+					var rr = $("input[name=rr]:checked").val();
+					if(rr == "1") {
+						//精确查询
+						var str = localStorage[key];
+						var obj = JSON.parse(str);
+						$("p").html("姓名：" + obj.name + "<br>邮箱：" + obj.email + "<br>备注：" + obj.note);
+					} else {
+						//模糊查询
+						//$("p").html("");
+						$("p").empty();
+						for(var i in localStorage) {
+							//console.log( i +":"+ localStorage[i] );
+
+							if(i.toUpperCase().indexOf(key.toUpperCase()) > -1) {
+								var obj = JSON.parse(localStorage[i]);
+								var name = obj.name.replace(eval("/" + key + "/i"), function(w) {
+									return "<mark>" + w + "</mark>";
+								})
+
+								$("p").append("姓名：" + name + "<br>邮箱：" + obj.email + "<br>备注：" + obj.note + "<hr>");
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+
+		姓名：<input type="text" /><br> 邮箱：
+		<input type="email" /><br> 电话：
+		<input type="text" /><br> 备注：
+		<input type="text" /><br>
+		<input type="button" value="保存" /><br>
+		<hr> 根据姓名检索信息：
+		<input type="text" />
+		<label><input type="radio" name="rr" value="0" />模糊查询</label>
+		<label><input type="radio" name="rr" value="1" checked />精确查询</label>
+		<input type="button" value="检索" />
+		<hr>
+		<p></p>
+
+	</body>
+
+</html>

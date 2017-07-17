@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script>
+			(function() {
+				document.write("<table>");
+				for(var i = 1; i <= 9; i++) {
+					document.write("<tr>");
+					(function(n) {
+						for(var i = 1; i <= n; i++) {
+							document.write("<td>" + n + "*" + i + "=" + (i * n) + "</td>");
+						}
+					})(i);
+					document.write("</tr>");
+				}
+				document.write("</table>");
+			}())
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

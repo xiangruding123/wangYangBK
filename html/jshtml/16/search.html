@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1 {
+				border: 1px solid gray;
+				background: yellow;
+				display: none;
+			}
+		</style>
+		<script src="ajax.js"></script>
+		<script>
+			var arr;
+			var url = "word.txt?t=" + new Date().getTime(); //数据
+			ajax.post(url, "x=2", function(str) { //ajax
+				arr = eval("(" + str + ")").list; //得到数组
+			});
+
+			function show() {
+				var word = document.getElementById("word").value; //得到文本域中的值
+				var div1 = document.getElementById("div1"); //得到提示菜单div
+				div1.innerHTML = ""; //提示菜单清空内容。如果不做清空，数据将累加。
+				if(word != "") { //当文本域中的值为空时
+					var reg = eval("/" + word + "/gi"); //声明正则
+					for(var i = 0; i < arr.length; i++) { //遍历
+						var obj = arr[i]; //得到对象
+						//div1.innerHTML+=obj.key.replace(word,"<font color=red>"+word+"</font>")+"<br>";//将key值追加到提示菜单中
+						///////////////////////////////////////////////////////////////////////////////////////////////////
+						// 方法1
+						// 在数据的key中，查询文本域的值，如果存在，则大于1
+						/*
+						var v=obj.key;	// 保存key值
+						var a=v.toUpperCase()
+						var b=word.toUpperCase()
+						var l=a.indexOf(b)	//取b在a中出现的下标，不存在时返回-1，存在时返回出现位置的下标
+						if( l>-1 ){	// 存在时（指 文本域中的值有关联项）
+							var old=v.substr(l, b.length)	// 找出key中原始的字符（即假设输入的是j，而关联项是J，我们把J取出来）
+							var reg=eval("/"+old+"/gi")	//声明正则，全局并忽略大小写
+							var n=v.replace(reg, "<font color=red>"+old+"</font>");	//找出key中匹配的字符并字体加红
+							var div=document.createElement("div");	//创建div
+							div.innerHTML=n;	//设置内容
+							div.onclick=function(){	//绑定单击事件
+								document.getElementById("word").value=this.innerText;	//将当前被点击的div中的内容放入word输入框中
+								div1.style.display="none";	//隐藏菜单
+							}
+							div1.appendChild(div);	//将div添加到div1中				
+						}
+						*/
+						///////////////////////////////////////////////////////////////////////////////////////////////////
+						// 方法2
+						/**/
+						var txt = obj.key; //指 列表中具体的一项
+						var col = txt.match(reg); //根据正则取出匹配的结果
+						if(col) { //当数组存在时
+							// txt 指 列表中具体的一项	"JavaScript"
+							// col 指 在项中匹配出的结果 ["J"]
+							//console.log( txt +" : "+ col )
+							t2 = txt;
+							a2 = txt.split(reg);
+							/*for(var j=0; j<col.length; j++){
+								var s=col[j];//指匹配出来的结果
+								txt=txt.replace(s, "<font color=red>"+s+"</font>");//txt指加红显示匹配的结果		
+							}*/
+							s2 = "";
+							for(var j = 0; j < col.length; j++) {
+								s2 += a2[j] + "<font color=red>" + col[j] + "</font>"
+							}
+							s2 += a2[j]
+							//console.log(col)
+							//console.log(a2)	
+							//console.log(s2)		
+							//console.log( txt );
+							//txt="<div onclick=\"Change('"+obj.key+"')\">"+txt+"</div>";//绑定单击事件				
+							//div1.innerHTML+=txt;
+							txt = "<div onclick=\"Change('" + obj.key + "')\">" + s2 + "</div>"; //绑定单击事件				
+							div1.innerHTML += txt;
+							//console.log("--------------")
+						}
+						//console.log(txt);
+						//console.log(col);
+
+					}
+					//console.log(':------------------')	
+					if(div1.innerHTML != "") {
+						div1.style.display = "block";
+					}
+				} else {
+					div1.style.display = "none";
+				}
+			}
+
+			function Change(str) {
+				//alert(str)
+				document.getElementById("word").value = str;
+				document.getElementById("div1").style.display = "none";
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<input id="word" type="text" onkeyup="show()" />
+		<div id="div1"></div>
+
+	</body>
+
+</html>

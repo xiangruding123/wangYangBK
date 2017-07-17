@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>无标题文档</title>
+		<script>
+			var objTxt;
+			window.onload = function() {
+				objTxt = document.getElementById("txt");
+				objTxt.value = "username";
+
+				document.getElementById("textarea1").value = "多行\r文本域";
+
+				//单选按钮
+				//var objRA=document.getElementsByName("ra");
+				//alert(objRA.length);
+				//alert(objRA[1].checked);
+				//objRA[2].checked=true;
+
+				//多选按钮
+				var objCB = document.getElementsByName("cb");
+				//objCB[0].checked=true;
+				document.getElementById("cb1").onclick = function() {
+					//alert(this.checked);
+					var v = this.checked; //用v来记录当前全选按钮是否已被选中
+					for(var i = 0; i < objCB.length; i++) { //遍历爱好项
+						//alert(objCB[i].value+"\n"+v);
+						objCB[i].checked = v; //每一项的选中属性等于v。即v为真时，所有爱好都选中；v为假时，所有爱好都未选中
+					}
+				}
+				document.getElementById("btn2").onclick = function() {
+					for(var i = 0; i < objCB.length; i++) {
+						/*
+						先执行等号右侧的代码，取得结果后，赋值给等号左侧的对象
+						*/
+						objCB[i].checked = !objCB[i].checked;
+					}
+				}
+			}
+
+			function fn() {
+				if(objTxt.value == "") {
+					alert("请输入");
+					objTxt.focus();
+					return false;
+				} else {
+					return true;
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<form title="描&#10;述" name="form1" method="get" action="2.html" onSubmit="return fn()">
+			<textarea id="textarea1"></textarea>
+			<input type="text" id="txt" />
+			<hr> 国籍：
+			<label><input type="radio" name="ra" />中国</label>
+			<label><input type="radio" name="ra" checked />美国</label>
+			<label><input type="radio" name="ra" />英国</label>
+			<hr> 爱好：
+			<label><input type="checkbox" name="cb" value="吃饭" />吃饭</label>
+			<label><input type="checkbox" name="cb" value="睡觉" />睡觉</label>
+			<label><input type="checkbox" name="cb" value="打豆豆" />打豆豆</label>
+			<br>
+			<label><input type="checkbox" id="cb1" />全选</label>
+			<input type="button" value="反选" id="btn2" />
+
+			<input type="submit" value="提交" />
+		</form>
+
+	</body>
+
+</html>

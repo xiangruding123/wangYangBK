@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>无标题文档</title>
+		<style>
+			p {
+				border-bottom: 1px solid gray;
+			}
+		</style>
+		<script src="jquery-1.11.3.js"></script>
+		<script>
+			//如果数据库存在，则打开；不存在时，则创建
+			var db = openDatabase("db", "1", "说明", 2 * 1024);
+			//事物
+			db.transaction(function(tx) {
+				//如果表不存在，则创建表 
+				//tx.executeSql('CREATE TABLE IF NOT EXISTS t1 (id unique, log)'); 
+				//插入数据
+				//for(var i=2; i<100; i++){
+				//tx.executeSql('INSERT INTO t1 (id, log) VALUES ('+i+', "foobar'+i+'")');  
+				//}
+				//tx.executeSql('INSERT INTO t1 (id, log) VALUES (?, ?)', [100, '参数']);
+
+				//读取数据
+				/*
+				tx.executeSql('SELECT * FROM t1', [], function (tx, results) {
+					var len = results.rows.length, i; 
+					var msg = "<p>共有: " + len + "条数据</p>"; 
+					document.querySelector('#status').innerHTML +=  msg; 
+					var show=$("#show");
+					for (i = 0; i < len; i++){
+						show.append("<p>"+results.rows.item(i).id+" , "+results.rows.item(i).log+"</p>"); 
+					}
+			    }, null); 
+				*/
+
+				//修改
+				//tx.executeSql("update t1 set [log]='今天天气不错' where id=2 "); 
+				//tx.executeSql("update t1 set [log]='明天放假了' where id<10 and id>5 "); 
+				//tx.executeSql("update t1 set [log]='该吃饭了' where [log] like '%bar1%' or id=30 ");   
+
+				//删除表内的数据
+				//tx.executeSql("delete from t1 where id=2 ");
+
+				//删除表
+				//tx.executeSql("drop table t1");
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<div id="status"></div>
+
+		<div id="show"></div>
+
+	</body>
+
+</html>

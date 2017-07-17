@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>城市联动</title>
+		<script>
+			//json指javascript对象表示法
+			/*
+			var obj={
+				a:1,//多个属性用逗号分隔
+				b:"2",
+				c:["f","g"],
+				"d":{	//属性在这段代码中可以写引号，也可以不写；但在json文件中，必须写双引号
+					"d1":1,
+					"d2":2
+				}
+			}
+			*/
+			//alert( obj.d.d2 );//方法1：通过. 一层一层的把对象找出来
+			//alert( obj["a"] );//方法2：通过[]	一层一层的把对象找出来	中括号里面是该对象的属性名(key)	
+
+			var obj = {
+				"北京": ["东城区", "西城区", "海淀区", "朝阳区"],
+				"上海": ["浦东区", "宝山区", "徐汇区"],
+				"天津": ["塘沽区", "南开区"]
+			}
+
+			window.onload = function() {
+				var s1 = document.getElementById("s1");
+				var s2 = document.getElementById("s2");
+
+				for(var i in obj) { //遍历对象obj，obj有多少个属性，就循环几次
+					//console.log( i+" : "+obj[i] );	//这里的i指属性名；obj[i]指属性值（即在obj这个对象中，通过i这个属性名，找到其对应的属性值）
+					s1.options.add(new Option(i, i)); //s1这个下拉菜单中添加一个新项，新项的text及value都是i
+				}
+
+				s1.onchange = function() { //对下拉菜单绑定事件，当值发生改变时，触发事件
+					fn(this.value); // this.value指s1当前的选中值
+				}
+
+				fn(s1.value); //初始化执行事件
+
+				function fn(v) { //v指城市名
+					//alert( v );
+					s2.length = 0; //清空s2中的项，指项的数量设置为0，即清空全部项
+					//var v=this.value;
+					var arr = obj[v]; //在obj这个对象中，根据v这个属性，找到v属性对应的属性值
+					for(var i = 0; i < arr.length; i++) {
+						//alert( arr[i] );
+						s2.options.add(new Option(arr[i], arr[i])); //添加新项， new Option( text, value )
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<select id="s1"></select>
+
+		<select id="s2"></select>
+
+	</body>
+
+</html>

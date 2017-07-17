@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>canvas</title>
+		<style>
+			#myCanvas {
+				border: 1px solid gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img id="img1" src="http://images.cnitblog.com/blog/431064/201403/311618110631855.jpg" />
+		<canvas id="myCanvas" width="400" height="400"></canvas><br>
+		<input type="button" id="btn" value="btn">
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+
+			/*
+			ctx.fillStyle="red";
+			ctx.rect(50,20,200,120);
+			ctx.fill();	
+				
+			ctx.clip(); 
+
+			ctx.beginPath();	
+			ctx.fillStyle="green"; 
+			//ctx.fillRect(0,0,150,100);
+			ctx.rect(0,0,150,100);
+			ctx.fill();
+			ctx.closePath()
+
+
+			ctx.fillStyle="red";
+			ctx.rect(20,20,100,100);
+			ctx.fill();	
+
+
+			var imgData=ctx.getImageData(10,10,50,50);
+			ctx.putImageData(imgData,-10,170);
+			*/
+
+			//var img = new Image();
+			//img.src = "http://offlintab.firefoxchina.cn/static/img/search/baidu_web.png";
+			//img.onload = function(){
+			//var pat=ctx.createPattern(img1,"repeat");//repeat|repeat-x|repeat-y|no-repeat
+			/*
+			var lg = ctx.createLinearGradient(350,0,0,0);
+			lg.addColorStop(0,"#ff0000");
+			lg.addColorStop(0.5,"#18d58c");
+			lg.addColorStop(1,"#001eff");
+
+			ctx.fillStyle=lg;
+			ctx.rect(0,0,150,150);
+			ctx.fill();
+	
+			ctx.strokeStyle=pat;
+			ctx.lineWidth=10;
+			ctx.rect(50,20,200,120);
+			ctx.stroke();
+			*/
+
+			//ctx.strokeStyle="red";
+			//ctx.fillStyle="red";
+			//ctx.rect(50,20,200,120);
+			//ctx.stroke();
+			//ctx.fill();
+
+			//ctx.clip(); 
+
+			//ctx.beginPath();
+			//ctx.fillStyle="green"; 
+			//ctx.fillRect(0,0,150,100);
+			//ctx.closePath();
+			//ctx.fill();
+
+			//var imgData=ctx.getImageData(75,10,50,50);
+			//ctx.putImageData(imgData,200,200);
+			//}
+
+			var img = new Image();
+			img.src = "http://offlintab.firefoxchina.cn/static/img/search/baidu_web.png";
+			img.onload = function() {
+				ctx.drawImage(img, 50, 50);
+				//ctx.drawImage(img,50,50,120,120);
+				//ctx.drawImage(img,29,0,27,31,100,100,200,200);
+			}
+		</script>
+	</body>
+
+</html>

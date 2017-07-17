@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img {
+				width: 350px;
+			}
+			
+			div {
+				width: 350px;
+				border: 1px solid gray;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+	</body>
+
+</html>
+<script>
+	var json = {
+		list: [{
+				src: "images/1.jpg",
+				title: "苹果"
+			},
+			{
+				src: "images/2.jpg",
+				title: "香蕉"
+			},
+			{
+				src: "images/3.jpg",
+				title: "桃"
+			},
+			{
+				src: "images/4.jpg",
+				title: "橘子"
+			},
+			{
+				src: "images/5.jpg",
+				title: "梨"
+			},
+			{
+				src: "images/6.jpg",
+				title: "杏"
+			},
+			{
+				src: "images/7.jpg",
+				title: "西瓜"
+			},
+			{
+				src: "images/8.jpg",
+				title: "哈密瓜"
+			},
+			{
+				src: "images/9.jpg",
+				title: "菠萝"
+			},
+			{
+				src: "images/10.jpg",
+				title: "葡萄"
+			},
+			{
+				src: "images/11.jpg",
+				title: "樱桃"
+			},
+			{
+				src: "images/12.jpg",
+				title: "草莓"
+			},
+			{
+				src: "images/13.jpg",
+				title: "猕猴桃"
+			},
+			{
+				src: "images/14.jpg",
+				title: "火龙果"
+			},
+			{
+				src: "images/15.jpg",
+				title: "荔枝"
+			},
+			{
+				src: "images/1.jpg",
+				title: "aaaa"
+			},
+			{
+				src: "images/2.jpg",
+				title: "bbb"
+			},
+			{
+				src: "images/3.jpg",
+				title: "ccc"
+			},
+			{
+				src: "images/4.jpg",
+				title: "ddd"
+			},
+			{
+				src: "images/5.jpg",
+				title: "5"
+			},
+			{
+				src: "images/6.jpg",
+				title: "6"
+			},
+			{
+				src: "images/7.jpg",
+				title: "fasdf"
+			},
+			{
+				src: "images/8.jpg",
+				title: "adga"
+			},
+			{
+				src: "images/9.jpg",
+				title: "fwe"
+			},
+			{
+				src: "images/10.jpg",
+				title: "asdfwe"
+			},
+			{
+				src: "images/11.jpg",
+				title: "34sdfa"
+			},
+			{
+				src: "images/12.jpg",
+				title: "cx4"
+			},
+			{
+				src: "images/13.jpg",
+				title: "cfg4"
+			},
+			{
+				src: "images/14.jpg",
+				title: "zxddd"
+			},
+			{
+				src: "images/15.jpg",
+				title: "faewt"
+			},
+			{
+				src: "images/1.jpg",
+				title: "aaaa"
+			},
+			{
+				src: "images/2.jpg",
+				title: "bbb"
+			},
+			{
+				src: "images/3.jpg",
+				title: "ccc"
+			},
+			{
+				src: "images/4.jpg",
+				title: "ddd"
+			},
+			{
+				src: "images/5.jpg",
+				title: "5"
+			},
+			{
+				src: "images/6.jpg",
+				title: "6"
+			},
+			{
+				src: "images/7.jpg",
+				title: "fasdf"
+			},
+			{
+				src: "images/8.jpg",
+				title: "adga"
+			},
+			{
+				src: "images/9.jpg",
+				title: "fwe"
+			},
+			{
+				src: "images/10.jpg",
+				title: "asdfwe"
+			},
+			{
+				src: "images/11.jpg",
+				title: "34sdfa"
+			},
+			{
+				src: "images/12.jpg",
+				title: "cx4"
+			},
+			{
+				src: "images/13.jpg",
+				title: "cfg4"
+			},
+			{
+				src: "images/14.jpg",
+				title: "zxddd"
+			},
+			{
+				src: "images/15.jpg",
+				title: "faewt"
+			}
+		]
+	}
+	//要确保执行此代码时，body已经被页面解释了，所以代码要写在body的后面
+	var body = document.body;
+	var arr = json.list;
+	for(var i = 0; i < arr.length; i++) {
+		var obj = arr[i];
+		//向body中追加div
+		var div = document.createElement("div");
+		body.appendChild(div);
+		//向div中追加img
+		var img = document.createElement("img");
+		img.src = obj.src;
+		div.appendChild(img);
+		//向div中追加p
+		var p = document.createElement("p");
+		p.innerHTML = i + "," + obj.title;
+		div.appendChild(p);
+	}
+
+	// 图片完全载入成功之后，再执行坐标定位，如果图片在加载过程中时执行了定位，div.offsetHeight的值将忽略图片	
+	window.onload = function() {
+		pbl();
+		pbl();
+		/*
+		第一次执行时，页面是没有滚动条的，取出的宽度是没有滚动条时页面的宽度
+		将图片摆放到页面后，有可能出现滚动条，滚动条有可能遮盖住图片，所以得重新计算宽度，重新图片定位，即再执行一次函数
+		*/
+	}
+	window.onresize = function() {
+		pbl(); //当窗口尺寸发生变化时，图片重新定位
+	}
+
+	function pbl() {
+
+		var arrDiv = document.getElementsByTagName("div");
+		var winWidth = document.documentElement.clientWidth || document.body.clientWidth; //页面的宽度
+		var divWidth = arrDiv[0].offsetWidth; //图片的宽度
+		var num = Math.floor(winWidth / divWidth); //一行显示多少张图片
+		/*
+		1，取出一行中所有图片的总宽度
+		2，页面宽度减去所有图片的总宽度等于留白的宽度
+		3，留白的宽度除以一行有几张图片数等于图片横向间距，数量+1是为了计算首尾图片对页面的间距
+		*/
+		var dis = (winWidth - divWidth * num) / (num + 1); //每张图片的间距（横向间距）
+
+		var posi = []; //窗口位置坐标，一行有多少个图片，就看成是多少个窗口
+		for(var i = 0; i < num; i++) {
+			// 给每一个元素去赋值，值为一个对象，对象里含xy轴坐标
+			posi[i] = {
+				x: (divWidth + dis) * i + dis, //新图片摆放时x轴坐标
+				y: 0 //新图片摆放时y轴坐标	
+			}
+		}
+
+		//循环所有图片，给每一个图片设置坐标
+		var space = 20; //纵向间距
+		var index = 0;
+		for(var i = 0; i < arrDiv.length; i++) {
+			var div = arrDiv[i];
+			index = getIndex(); //求高度最小的窗口的下标
+			var obj = posi[index]; //取出窗口坐标对象，该图片应该向哪个窗口中摆放
+
+			div.style.left = obj.x + "px"; //确定div的x轴坐标
+			div.style.top = obj.y + "px";
+
+			posi[index].y += div.offsetHeight + space; //更新y轴，新图片的y轴要放在历史图片的下面
+
+			//index++;
+			//if(index==num){index=0}
+
+		}
+
+		//求高度最小的窗口的下标
+		function getIndex() {
+			var index = 0; //假设index是最小的那个窗口的索引
+			var min = posi[index].y; //取出最小的那个窗口的高度值		
+			for(var j = 1; j < posi.length; j++) { //遍历窗口
+				//哪个高度值小，保存哪个索引
+				if(min > posi[j].y) {
+					min = posi[j].y;
+					index = j;
+				}
+			}
+			return index;
+		}
+	}
+</script>

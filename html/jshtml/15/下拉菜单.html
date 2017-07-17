@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>无标题文档</title>
+		<script>
+			window.onload = function() {
+				var sel1 = document.getElementById("sel1");
+				var btn1 = document.getElementById("btn1");
+				btn1.onclick = function() {
+					//alert(sel1.value);
+					//添加新项
+					//sel1.options.add( new Option("text", "value") );
+					//删除
+					//sel1.options.length=0;	//方法1，通过长度去删除项
+					//sel1.remove(1);			//方法2，通过下标删除项
+					//选中
+					//alert( sel1.length );
+					//alert( sel1[1].value );
+					//sel1[1].selected=true;	//方法1，先找到项，然后设为选中
+					//sel1.selectedIndex=2;		//方法2，通过下标，设置下拉菜单的选中项
+
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<select id="sel1">
+			<option value="0">a</option>
+			<option>b</option>
+			<option>c</option>
+		</select>
+
+		<input type="button" value="按钮" id="btn1" />
+
+	</body>
+
+</html>

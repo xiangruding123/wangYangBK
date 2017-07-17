@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>scale3D</title>
+		<style>
+			#div1 {
+				width: 100px;
+				height: 100px;
+				background: blue;
+				transform: perspective(1000px);
+				transform-style: preserve-3d;
+				position: relative;
+			}
+			
+			#div2 {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100px;
+				height: 100px;
+				background: red;
+				opacity: 0.7;
+				transform: translateZ(0px) scaleZ(2) rotateX(89deg);
+				transform-origin: 0 0 50px;
+			}
+			
+			#div3 {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100px;
+				height: 100px;
+				background: green;
+				opacity: 0.7;
+				transform: translateZ(0px) scaleZ(1) rotateX(45deg);
+				transform-origin: 0 0 50px;
+			}
+			
+			#div4 {
+				width: 100px;
+				height: 100px;
+				background: orange;
+				transform: perspective(100px) scaleZ(1) rotateX(85deg);
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="div1">
+			<div id="div2"></div>
+			<div id="div3"></div>
+		</div>
+
+		<div id="div4"></div>
+
+	</body>
+
+</html>

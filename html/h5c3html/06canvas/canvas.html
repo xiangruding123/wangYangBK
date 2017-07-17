@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>canvas</title>
+		<style>
+			#myCanvas {
+				border: 1px solid gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="400" height="400"></canvas>
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+			//填充
+			ctx.fillStyle = "rgba(255,0,0, 0.5)"; //"orange";
+			//ctx.rect(50,100,200,100);
+			//ctx.fill();
+			//ctx.fillRect(50,50,100,100);
+			//ctx.clearRect(100,100,50,50);
+
+			//边框
+			ctx.strokeStyle = "red";
+			ctx.lineWidth = 1;
+			//ctx.rect(50,100,200,100);
+			//ctx.stroke();
+			ctx.strokeRect(50, 50, 100, 100);
+		</script>
+	</body>
+
+</html>

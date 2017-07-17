@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>五星好评</title>
+		<style>
+
+		</style>
+		<script>
+			window.onload = function() {
+				var span = document.getElementsByTagName("span")[0];
+				var arrImg = document.getElementsByTagName("img");
+				var l = arrImg.length;
+				var flag = false;
+				for(var i = 0; i < l; i++) {
+					var img = arrImg[i];
+					img.index = i;
+					img.onmouseover = function() {
+						/*for(var j=0; j<l; j++){
+							arrImg[j].src=(j<=this.index)?"1.png":"0.png";
+						}*/
+						flag = false;
+						for(var j = 0; j <= this.index; j++) {
+							arrImg[j].src = "1.png";
+						}
+					}
+					img.onmouseout = function() {
+						if(!flag) {
+							for(var j = 0; j < l; j++) {
+								arrImg[j].src = "0.png";
+							}
+						}
+					}
+					img.onclick = function() {
+						flag = true;
+						span.innerHTML = this.index + 1;
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<img src="0.png" />
+		<img src="0.png" />
+		<img src="0.png" />
+		<img src="0.png" />
+		<img src="0.png" />
+		<span></span>
+
+	</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>无标题文档</title>
+		<style>
+			textarea {
+				width: 600px;
+				height: 200px;
+			}
+			
+			p {
+				width: 600px;
+				height: 200px;
+				border: 1px solid gray;
+			}
+		</style>
+		<script src="jquery-2.1.0.js"></script>
+		<script>
+			$(function() {
+				//设置
+				$("input:eq(0)").click(function() {
+					if(localStorage.ls) {
+						localStorage.ls += "<br>" + $("textarea").val();
+					} else {
+						localStorage.ls = $("textarea").val();
+					}
+					var d = new Date();
+					localStorage.ls += " " + d.toLocaleString();
+					$("input:eq(1)").click();
+					$("textarea").val("");
+				});
+				//读取
+				$("input:eq(1)").click(function() {
+					$("p").html(localStorage.ls);
+				});
+				//清除
+				$("input:eq(2)").click(function() {
+					localStorage.removeItem("ls");
+					$("textarea").val("");
+					$("p").html("");
+				});
+				//初始化显示
+				$("input:eq(1)").click();
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<textarea></textarea><br>
+		<input type="button" value="保存数据" />
+		<input type="button" value="显示数据" />
+		<input type="button" value="清除数据" />
+		<p></p>
+
+	</body>
+
+</html>

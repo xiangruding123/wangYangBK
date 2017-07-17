@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>计数计数</title>
+	</head>
+
+	<body>
+
+		<p>计数: <output id="result"></output></p>
+		<button onclick="startWorker()">开始</button>
+		<button onclick="stopWorker()">结束</button>
+		<br /><br />
+
+		<script>
+			var w;
+
+			function startWorker() {
+				//Worker对象是否有值，指判断当前浏览器是否支持Worker对象
+				if(typeof(Worker) !== "undefined") {
+					//全局变量w，是否存在有效值
+					//if(typeof(w)=="undefined"){
+					//当w未定义时，创建对象，连接到workers.js
+					w = new Worker("workers.js");
+					//}
+					//事件监听，捕捉由workers.js页传递过来的返回值
+					w.onmessage = function(event) {
+						//返回值用event.data来表示
+						document.getElementById("result").innerHTML = event.data;
+					};
+					console.log(w);
+				} else {
+					document.getElementById("result").innerHTML = "浏览器不支持workers";
+				}
+			}
+
+			function stopWorker() {
+				//停止
+				w.terminate();
+			}
+		</script>
+
+	</body>
+
+</html>
