@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script src="../jquery-1.11.3.js"></script>
+		<script>
+			$(function() {
+
+				//$("input").each(function(i){
+				//console.log(i);
+				//console.log( this.value );
+				//console.log( $(this).val() );
+				//});
+
+				/*var arr=["a","b","c"];
+				$.each(arr, function(i){
+					console.log(arr[i]);
+				});*/
+				//var arr=$("input");
+				//console.log( arr );
+				/*$.each(arr, function(i, f){
+					console.log(f.value);
+				});*/
+
+				var arr;
+				$.get("data.json", function(str) {
+					//console.log(str);
+					if(typeof str == "string") str = JSON.parse(str);
+					arr = str.list;
+					//console.log(eval("("+str+")"));
+					//console.log( JSON.parse(str) );
+					//arr=eval("("+str+")").list;
+				});
+
+				$("input:eq(2)").click(function() {
+					var user = $("input:eq(0)").val();
+					var pwd = $("input:eq(1)").val();
+					//alert(user+"\n"+pwd);
+					var flag = false;
+					$.each(arr, function(i) {
+						//console.log(arr[i]);
+						var o = arr[i];
+						if(user == o.username && pwd == o.password) {
+							flag = true;
+							//location.href="/1.txt";
+							return false; //跳出each循环
+						}
+					})
+					if(flag == false) {
+						alert("登陆失败");
+					}
+				});
+
+			});
+		</script>
+	</head>
+
+	<body>
+
+		用户名：<input type="text" value="1" /><br> 密码：
+		<input type="text" value="2" /><br>
+		<input type="button" value="登陆" />
+
+	</body>
+
+</html>

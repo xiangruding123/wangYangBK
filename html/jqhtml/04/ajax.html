@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script src="jquery-1.11.3.js"></script>
+		<script>
+			/*function callback(o){
+				console.log(o.a);
+			}*/
+
+			$(function() {
+				//$.get()
+				//$.post()
+				$.ajaxSetup({
+					url: "1.txt",
+					type: "GET"
+				});
+				$.ajax({
+					data: {
+						"a": 1
+					},
+					success: function(str) {
+						alert(str);
+					}
+				});
+				$.ajax({
+					data: {
+						"b": 2
+					},
+					success: function(str) {
+						alert(str);
+					}
+				});
+				//$.ajax({
+				//url:"1.txt?b=123&c=456&d=abc",
+				//data:{"a":"xxx"},
+				//type:'GET',
+				//success:function(response, status, xhr){
+				//alert(response);
+				//console.log(xhr)
+				//},
+				//error:function(xhr, status){
+				//console.log(status)
+				//},
+				//dataType:"jsonp",
+				//jsonp:"callback"
+				//});
+
+				//var str=document.getElementsByName("text1")[0].value;
+				//var str=document.form1.text1.value;
+				//var str=$("[name='text1']").val();
+				//alert( str );
+
+				//$("#btn").click(function(){
+				//console.log( $("form").serialize() );
+
+				//var o = $("form").serializeArray();
+				//console.log( o );
+				//$.each(o, function(i, f){
+				//console.log(f);
+				//});
+
+				//});
+
+				//var p={a:1, b:2, c:3, d:4};
+				//console.log( $.param(p) );
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<input type="button" value="按钮" id="btn" />
+
+		<form name="form1">
+
+			<input type="text" name="text1" value="text1111" />
+
+			<input type="radio" value="1" name="ra" />
+			<input type="radio" value="2" name="ra" />
+
+			<input type="checkbox" value="a" name="ck" />
+			<input type="checkbox" value="b" name="ck" />
+
+			<select name="select1">
+				<option value="一">1</option>
+				<option value="二">2</option>
+				<option value="三">3</option>
+			</select>
+
+		</form>
+	</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+		<script src="../jquery-1.11.3.js"></script>
+		<script>
+			$(function() {
+				var str = $("<a href='#'>123</a>");
+				//$("div").append(str);
+				//str.appendTo($("div"));
+
+				//$("div").prepend(str);
+				//str.prependTo($("div"));
+
+				//$("div").after(str);
+				//str.insertAfter($("div"));
+
+				//$("div").before(str);
+				//str.insertBefore($("div"));
+
+				//$("div").remove(":eq(0)");
+				//$("div").empty();
+
+				//$("b").clone().prependTo("p");
+				//$("b").click(function(){
+				//$(this).clone().insertAfter(this);
+				//});
+
+				//$("b:eq(1)").replaceWith("<i>x</i>");
+				//$("b:eq(2)").replaceWith($("b:eq(0)"))
+
+				$("<i>x</i>").replaceAll("b");
+
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<b>1</b>
+		<b>2</b>
+		<b>3</b>
+
+	</body>
+
+</html>

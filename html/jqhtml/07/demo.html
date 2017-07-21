@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.3.js"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+				float: left;
+				width: 200px;
+				height: 300px;
+				border: 1px solid gray;
+				margin: 10px;
+			}
+			/*div{position:absolute; width:300px; height:400px; border:1px solid gray; background:#f5f5f5;}*/
+			
+			.right {
+				position: absolute;
+				width: 100px;
+				height: 300px;
+				border: 1px solid gray;
+				background: skyblue;
+			}
+			
+			.bottom {
+				position: absolute;
+				width: 200px;
+				height: 100px;
+				border: 1px solid gray;
+				background: yellow;
+			}
+		</style>
+		<script>
+			$(function() {
+				$("li").mouseenter(function() {
+					/*$(this).css({borderRight:'1px solid white',borderBottom:'1px solid white'});*/
+					var offset = $(this).offset();
+					//$("div").css({left:offset.left, top:offset.top});
+					/*$("div").animate({
+						left:offset.left+100,
+						top:offset.top+100
+					}, 1000);*/
+					$(".right").css({
+						left: offset.left + 100,
+						top: offset.top
+					}).stop().animate({
+						left: offset.left + 200
+					});
+					$(".bottom").css({
+						left: offset.left,
+						top: offset.top + 200
+					}).stop().animate({
+						top: offset.top + 300
+					})
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+		<div class="right"></div>
+		<div class="bottom"></div>
+		<!--
+<div>
+<table border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="200" height="300">.</td>
+		<td width="100" style="border-left:1px solid gray">a</td>
+	</tr>
+	<tr>
+		<td height="100" style="border-top:1px solid gray">b</td>
+		<td></td>
+	</tr>
+</table>
+</div>
+-->
+	</body>
+
+</html>

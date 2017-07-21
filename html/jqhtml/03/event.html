@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+*{margin:0;padding:0;}
+</style>
+<script src="../jquery-1.11.3.js"></script>
+<script>
+$(function(){
+	//$(document).mousemove(function(event){
+		//console.log( event.type );
+		//console.log( event.target );
+		//console.log( event.keyCode );
+		//console.log( event.pageX , ",", event.pageY );
+		//console.log( event.clientX , ",", event.clientY );
+		//console.log( event.screenX , ",", event.screenY );
+	//});
+	/*$("div").click(function(){
+		alert('c2')
+	});
+	$("div").click(function(){
+		alert('c3')
+	});
+	
+	$("div").bind("click", function(e){
+		alert(e.type);
+	});
+	$("div").bind("click", function(e){
+		alert(e.target);
+	});*/
+	$("div").one("click", function(e){
+		alert(e.target);
+	});
+});
+</script>
+</head>
+<body>
+
+<div style="width:400px; height:400px; background:skyblue"></div>
+
+</body>
+</html>

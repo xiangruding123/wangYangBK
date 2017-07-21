@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+				document.onmousemove = function(e) {
+					//document.title = document.documentElement.scrollLeft+e.clientX+","+e.clientY;
+					document.title = e.offsetX; //e.clientX-???.offsetLeft
+
+				}
+			}
+		</script>
+	</head>
+
+	<body style="width:4000px; height:4000px;">
+
+	</body>
+
+</html>

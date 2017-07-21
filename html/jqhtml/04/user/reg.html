@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script>
+			//设置cookie
+			function setCookie(_name, _value, _date) {
+				var d = new Date();
+				d.setDate(d.getDate() + _date);
+				document.cookie = _name + "=" + encodeURIComponent(_value) + "; path=/; expires=" + d.toGMTString();
+			}
+			//获取cookie
+			function getCookie(_name) {
+				var str = document.cookie;
+				var arr = str.split("; ");
+				for(var i = 0; i < arr.length; i++) {
+					var col = arr[i].split("=");
+					if(col[0] == _name) {
+						return decodeURIComponent(col[1]);
+					}
+				}
+				return "";
+			}
+
+			window.onload = function() {
+				//注册函数
+				document.getElementById("btn").onclick = function() {
+					var strName = document.getElementById("uName").value; //取出用户名
+					var strPass = document.getElementById("uPass").value; //取出密码
+					if(getCookie("user_" + encodeURIComponent(strName)) != "") { //检查该用户名是否已在cookie中
+						alert("注册失败，用户名已被占用");
+					} else {
+						setCookie("user_" + encodeURIComponent(strName), strPass, 3650); //将该用户名存入cookie
+						alert("注册成功");
+					}
+				}
+				//登陆函数
+				document.getElementById("btn2").onclick = function() {
+					var strName = document.getElementById("uName").value;
+					var strPass = document.getElementById("uPass").value;
+					var cookiePwd = getCookie("user_" + encodeURIComponent(strName)); //取出该用户名的cookie值
+					if(cookiePwd == strPass && cookiePwd != "") {
+						alert("登陆成功");
+					} else {
+						alert("登陆失败");
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		用户名：<input type="text" value="" id="uName" /><br> 密码：
+		<input type="text" value="" id="uPass" /><br>
+		<input type="button" value="注册" id="btn" />
+		<input type="button" value="登陆" id="btn2" />
+
+	</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<script src="jquery-1.11.3.js"></script>
+		<script src="base.js"></script>
+		<script src="win.js"></script>
+		<style>
+			.blur {
+				filter: url(blur.svg#blur);
+				/* FireFox, Chrome, Opera */
+				-webkit-filter: blur(10px);
+				/* Chrome, Opera */
+				-moz-filter: blur(10px);
+				-ms-filter: blur(10px);
+				filter: blur(10px);
+				filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+				/* IE6~IE9 */
+			}
+		</style>
+		<script>
+		</script>
+	</head>
+
+	<body style="height:4000px">
+		<div class="uc"></div>
+		<div class="navigator"></div>
+		<div class="box">
+			index.html
+			<img src="3.jpg" />
+			<img src="3.jpg" class="blur" />
+			<br>
+			<input type="text" id="txt" />
+			<script>
+				txt.onkeydown = function(e) {
+					e = e || window.event;
+					//alert(e.keyCode);
+					if(!/[0-9]/.test(String.fromCharCode(e.keyCode))) return false;
+					if(this.value.length == 11) return false;
+				}
+			</script>
+			<div style="position:fixed; bottom:0; right:0;" id="divTop">Top</div>
+			<script>
+				$("#divTop").click(function() {
+					console.log(1)
+					$("html,body").animate({
+						scrollTop: "0px"
+					}, 2000);
+				})
+			</script>
+		</div>
+	</body>
+
+</html>

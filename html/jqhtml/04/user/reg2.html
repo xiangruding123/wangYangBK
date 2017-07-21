@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+		<script>
+			function setCookie(_name, _value, _date) {
+				var d = new Date();
+				d.setDate(d.getDate() + _date);
+				document.cookie = _name + "=" + encodeURIComponent(_value) + "; path=/; expires=" + d.toGMTString();
+			}
+
+			function getCookie(_name) {
+				var str = document.cookie;
+				var arr = str.split("; ");
+				for(var i = 0; i < arr.length; i++) {
+					var col = arr[i].split("=");
+					if(col[0] == _name) {
+						return decodeURIComponent(col[1]);
+					}
+				}
+				return "";
+			}
+
+			window.onload = function() {
+				//表示用户数量
+				var index = getCookie("uIndex"); //取出cookie
+				if(index == "") {
+					setCookie("uIndex", 1, 3650); //不存在时，创建该cookie
+					index = 1;
+				}
+				//注册
+				document.getElementById("btn").onclick = function() {
+					var strName = document.getElementById("uName").value;
+					var strPass = document.getElementById("uPass").value;
+					var flag = false; //为假时，表示用户不存在
+					for(var i = 1; i <= index; i++) { //遍历所有的用户
+						var str = getCookie("u_" + i); //取出该用户的值
+						if(str == "") {
+
+						} else {
+							var arr = eval(str); //转换为数组
+							if(arr[0] == strName) { //如果用户名相同，表示该用户已经存在
+								flag = true; //为真时，表示用户已经存在
+								break; //跳出for循环
+							}
+						}
+					}
+					if(flag) {
+						alert("注册失败");
+					} else {
+						alert("注册成功");
+
+						setCookie("u_" + index, "['" + strName + "','" + strPass + "']", 3650); //写入用户cookie
+						index++; //注册成功后需要对index更新
+						setCookie("uIndex", index, 3650); //写入数量cookie
+					}
+
+				}
+				//登陆
+				document.getElementById("btn2").onclick = function() {
+					var strName = document.getElementById("uName").value;
+					var strPass = document.getElementById("uPass").value;
+					var flag = false;
+					for(var i = 1; i <= index; i++) {
+						var str = getCookie("u_" + i);
+						if(str == "") {} else {
+							var arr = eval(str);
+							if(arr[0] == strName && arr[1] == strPass) {
+								flag = true;
+								break;
+							}
+						}
+					}
+					if(flag) {
+						alert("登陆成功");
+					} else {
+						alert("登陆失败");
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		用户名：<input type="text" value="" id="uName" /><br> 密码：
+		<input type="text" value="" id="uPass" /><br>
+		<input type="button" value="注册" id="btn" />
+		<input type="button" value="登陆" id="btn2" />
+
+	</body>
+
+</html>

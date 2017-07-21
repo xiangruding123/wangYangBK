@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box {
+				width: 596px;
+				height: 334px;
+				position: relative;
+				border: 1px solid red;
+				overflow: hidden;
+			}
+		</style>
+		<script src="jquery-1.11.3.js"></script>
+		<script>
+			var json = {
+				2: ["安全提示"],
+				3: ["万分期待"],
+				5: ["可以吃爆米花了", "哈哈哈", "无敌是多么寂寞"],
+				8: ["太好看了", "嘿嘿嘿", "呵呵呵"],
+				14: ["良心影片", "啊啊"],
+				15: ["abc"]
+			}
+			$(function() {
+				var flag = false;
+				$("video").bind("play", function() { //视频播方时，触发的函数
+					flag = true;
+				});
+				$("video").bind("pause", function() { //视频暂停时，触发的函数
+					flag = false;
+				});
+				/*$("video").bind("timeupdate", function(){//视频播方过程中，触发的函数
+					console.log( this.currentTime );//播方的进度，返回秒
+				});*/
+				setInterval(function() {
+					if(flag) {
+						//var s=$("video").attr("currentTime");
+						//$("video")取出的是数组，必须通过下标才能找到具体的元素，在元素上才有currentTime属性
+						var s = $("video")[0].currentTime; //取出当前播方的进度，秒数
+						s = parseInt(s); //秒取整数
+						var arr = json[s]; //根据秒数，在json中取数据
+						if(arr != undefined) { //能够取出数据时
+							//console.log(s,":",str);
+							$.each(arr, function(i) {
+								var str = arr[i];
+								//console.log(i+":"+str);
+								var div = $("<div>" + str + "</div>");
+								$(".box").append(div); //在box中创建div
+								div.css({
+									"position": "absolute",
+									"top": Math.random() * 300, //300指 box高度减去div自身的高度
+									"left": 596, //596指 box宽度
+									"color": "rgb(" + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + ")",
+									"z-index": 1,
+									"white-space": "nowrap", //文字不换行
+									"background": "black"
+								});
+								//console.log(div.width())
+								var w = div.width();
+								div.animate({
+									"left": 0 - w //div移出左侧的舞台时才应该清除div
+								}, 5000, function() {
+									//console.log(this.innerHTML);
+									$(this).remove();
+								});
+							});
+						}
+					}
+				}, 1000);
+
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="box">
+			<video width="596" height="334" controls style="z-index:0;background:black;">
+				<source src="h.mp4" />
+			</video>
+		</div>
+	</body>
+
+</html>

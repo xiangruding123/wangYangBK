@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			input {
+				height: 30px;
+				width: 150px;
+			}
+			
+			ul {
+				margin: 0;
+				padding: 0;
+				width: 153px;
+				height: 30px;
+				border-top: 1px solid gray;
+				border-left: 1px solid gray;
+			}
+			
+			li {
+				list-style: none;
+				width: 50px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				font-size: 12px;
+				float: left;
+				border-right: 1px solid gray;
+				border-bottom: 1px solid gray;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+				input1.onkeyup = function() {
+					/*var f1=false, f2=false, f3=false, n=0;
+					var str=this.value;
+					for(var i=0; i<str.length; i++){
+						var chr=str[i];
+						if(!f1){ f1 = /[a-z]/.test(chr);}
+						if(!f2){ f2 = /[A-Z]/.test(chr);}
+						if(!f3){ f3 = /[0-9]/.test(chr);}
+					}
+					if(f1)n++;
+					if(f2)n++;
+					if(f3)n++;		
+					var arrLi=document.getElementsByTagName("li");
+					for(var i=0; i<arrLi.length; i++){
+						arrLi[i].style.background="";
+						if(i<n){
+							arrLi[i].style.background="red";
+						}
+					}*/
+					var str = this.value;
+					/*var n=0;
+					n += /[A-Za-z]/.test(str) ? 1:0;
+					n += /[0-9]/.test(str) ? 1:0;
+					n += /[@!#]/.test(str) ? 1:0;
+					var arrLi=document.getElementsByTagName("li");
+					for(var i=0; i<arrLi.length; i++){
+						arrLi[i].style.background="";
+						if(i<n){
+							arrLi[i].style.background="red";
+						}
+					}*/
+					if(/[A-Za-z]/.test(str) && /[0-9]/.test(str) && /[@!#]/.test(str)) {
+						console.log("符合");
+					} else {
+						console.log("不符合");
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<input type="text" id="input1" />
+		<ul>
+			<li>弱</li>
+			<li>中</li>
+			<li>强</li>
+		</ul>
+
+	</body>
+
+</html>

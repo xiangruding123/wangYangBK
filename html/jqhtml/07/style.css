@@ -1,0 +1,60 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 4000px;
+}
+
+li {
+	list-style: none;
+}
+
+.uc {
+	background: skyblue;
+}
+
+.uc .main {
+	width: 800px;
+	margin: 0 auto;
+	height: 30px;
+	line-height: 30px;
+	text-align: right;
+}
+
+.uc .main a {
+	margin-right: 20px;
+	color: white;
+	cursor: pointer;
+}
+
+.navigator .main {
+	width: 800px;
+	margin: 0 auto;
+	height: 50px;
+	line-height: 50px;
+	text-align: left;
+}
+
+.navigator .main a {
+	margin-right: 20px;
+	color: white;
+	cursor: pointer;
+	background: skyblue;
+	padding: 5px;
+	border: 1px solid #f5f5f5;
+}
+
+.box {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.box td {
+	padding: 10px;
+}
+
+.box td span {
+	margin-left: 20px;
+}

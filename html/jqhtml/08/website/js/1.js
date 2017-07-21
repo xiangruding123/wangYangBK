@@ -1,0 +1,1 @@
+$.get("../../../js/1.txt",function(str){alert(str)});

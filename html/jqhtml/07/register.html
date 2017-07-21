@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<script src="jquery-1.11.3.js"></script>
+		<script src="base.js"></script>
+		<script src="win.js"></script>
+		<script>
+			$(function() {
+				$("#btn").click(function() {
+					var strUsername = $("#username").val();
+					var strPassword1 = $("#password1").val();
+					var strPassword2 = $("#password2").val();
+					$("td>span").html("");
+					var flag = true;
+					if(strUsername == "") {
+						$("#username~span").html("用户名不能为空").css({
+							"color": "red"
+						});
+						flag = false;
+					} else {
+						var strCookie = getCookie("user_" + encodeURIComponent(strUsername));
+						if(strCookie != "") {
+							$("#username~span").html("用户名已被占用").css({
+								"color": "red"
+							});
+							flag = false;
+						}
+					}
+					if(strPassword1 == "") {
+						$("#password1~span").html("密码不能为空").css({
+							"color": "red"
+						});
+						flag = false;
+					}
+					if(strPassword1 != strPassword2) {
+						$("#password2~span").html("密码不一致").css({
+							"color": "red"
+						});
+						flag = false;
+					}
+					if(flag) {
+						//注册
+						setCookie("user_" + encodeURIComponent(strUsername), strPassword1, 10);
+						//保存登陆状态
+						setCookie("userlogin", strUsername, 10);
+						//跳转到首页
+						location.href = "index.html";
+					}
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="uc"></div>
+		<div class="navigator"></div>
+		<div class="box">
+			<table>
+				<tr>
+					<td>用户名：</td>
+					<td><input id="username" type="text" value=""><span></span></td>
+				</tr>
+				<tr>
+					<td>密码：</td>
+					<td><input id="password1" type="password" value=""><span></span></td>
+				</tr>
+				<tr>
+					<td>确认密码：</td>
+					<td><input id="password2" type="password" value=""><span></span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input id="btn" type="button" value="注册"></td>
+				</tr>
+			</table>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.d1 {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+		</style>
+		<script src="../jquery-1.11.3.js"></script>
+		<script>
+			$(function() {
+				/*$("div").click(function(){
+					//console.log( this );
+					//this.css("color","red");
+					//console.log( $(this) );
+					//$(this).css("color","red");
+					//console.log( $(this).hasClass("d1") );
+					if($(this).hasClass("d1")){
+						$(this).animate({left:300});
+					}
+					
+				});*/
+
+				//$("div").filter(".d1,.d4,#d3").eq(1).css("color","red");
+
+				//$("div").click(function(){
+				/*$("div").filter(function(index){
+					//console.log(index);
+					//console.log( $("ol", this).length );
+					//return $("ol", this).length == 0
+					if(index == 2)
+						return true;
+					else
+						return false;
+					
+				}).css("color","red");*/
+				//});
+
+				/*var str=$("input").map(function(){
+					//return this.value;
+					return $(this).val();
+				}).get().join(",")
+	
+				console.log(str);
+				$("p").append(str);//向$("p")内部追加内容
+				*/
+
+				//alert( $("input").slice(0, 1).val() );
+				//$("p").slice(2,4).css("color","red");
+				//$("p").slice(-2).css("color","red");
+				//$("p").slice(0,-2).css("color","red");
+				//$("p").slice(-4,-2).css("color","red");
+
+				//$("div").children().css("color","red");
+				//console.log( $("div").find(":eq(0)") );
+				//console.log( $("p:eq(0)").siblings("div:eq(1)").children() );
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<a>a</a>
+		<p>0</p>
+		<div>
+			<p id='p1'>1</p>
+			<p>2</p>
+		</div>
+		<p>3</p>
+		<div>
+			<p>4</p>
+		</div>
+
+	</body>
+
+</html>

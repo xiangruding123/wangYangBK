@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			li {
+				list-style: none;
+				width: 200px;
+				height: 200px;
+				background: url(bg.png);
+			}
+			
+			div {
+				position: absolute;
+				background: green;
+				width: 20px;
+				height: 20px;
+			}
+			
+			p {
+				position: absolute;
+				background: red;
+				width: 20px;
+				height: 20px;
+			}
+		</style>
+		<script src="../jquery-1.11.3.js"></script>
+		<script>
+			$(function() {
+				//假设arr为蛇，数组头为蛇头，数组尾为蛇尾
+				var arr = [{
+						x: 20,
+						y: 0
+					},
+					{
+						x: 0,
+						y: 0
+					}
+				]
+
+				//将蛇创建出来
+				for(var i = 0; i < arr.length; i++) {
+					var obj = arr[i];
+					$("li").append("<div style='left:" + obj.x + "px; top:" + obj.y + "px;'></div>");
+				}
+
+				//蛇的移动
+				var stank = {
+					38: {
+						x: 0,
+						y: -20
+					},
+					39: {
+						x: 20,
+						y: 0
+					},
+					40: {
+						x: 0,
+						y: 20
+					},
+					37: {
+						x: -20,
+						y: 0
+					}
+				}
+				var action = 39; //默认向右移动
+				$(document).keyup(function(event) {
+					action = event.keyCode;
+				})
+				setInterval(function() {
+					stankMove(stank[action]);
+				}, 300);
+				//蛇移动函数
+				function stankMove(o) {
+					//向右移动
+					oldX = arr[arr.length - 1].x;
+					oldY = arr[arr.length - 1].y;
+					for(var i = arr.length - 1; i > 0; i--) {
+						arr[i] = {
+							x: arr[i - 1].x,
+							y: arr[i - 1].y
+						};
+						$("div").eq(i).css({
+							left: arr[i].x,
+							top: arr[i].y
+						});
+					}
+					arr[0] = {
+						x: arr[0].x + o.x,
+						y: arr[0].y + o.y
+					}
+					$("div").eq(i).css({
+						left: arr[i].x,
+						top: arr[i].y
+					});
+					//碰撞检测食物
+					var x = parseInt($("p").css("left"));
+					var y = parseInt($("p").css("top"));
+					if(arr[0].x == x && arr[0].y == y) {
+						//删除食物
+						$("p").remove();
+						//添加蛇尾
+						$("li").append("<div style='left:" + oldX + "px; top:" + oldY + "px;'></div>");
+						//更新蛇
+						arr.push({
+							x: oldX,
+							y: oldY
+						});
+						createFoods();
+					}
+					//碰撞检测自身		
+					var x = arr[0].x;
+					var y = arr[0].y;
+					for(var i = 1; i < arr.length; i++) {
+						if(arr[i].x == x && arr[i].y == y) {
+							document.title = "GameOver!";
+						}
+					}
+				}
+
+				createFoods();
+
+				function createFoods() {
+					//食物不能在身体上出现
+					var x, y, flag;
+					do {
+						flag = false; //表示食物不在蛇内部
+						x = Math.floor(Math.random() * Math.floor($("li").width() / 20)) * 20;
+						y = Math.floor(Math.random() * Math.floor($("li").height() / 20)) * 20;
+						for(var i = 0; i < arr.length; i++) {
+							var obj = arr[i];
+							if(obj.x == x && obj.y == y) {
+								flag = true;
+								break;
+							}
+						}
+					} while (flag)
+					$("li").append("<p style='left:" + x + "px; top:" + y + "px;'></p>");
+				}
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<li></li>
+
+	</body>
+
+</html>
